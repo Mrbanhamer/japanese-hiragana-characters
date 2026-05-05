@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import classification_report, confusion_matrix, f1_score, precision_recall_curve, average_precision_score
 from sklearn.preprocessing import label_binarize
-from fake_data import generate
 
 def check_class_balance(y, le):
     """Analyserar om datasetet är obalanserat."""
@@ -121,17 +120,3 @@ def plot_results(data, cm, f1, report, y_test_bin, y_score):
     ax6.grid(True)
     plt.tight_layout()
     plt.show()
-
-if __name__ == "__main__":
-    print("Genererar fejkdata...")
-    data = generate()
-    
-    check_class_balance(data['y_test'], data['le'])
-    
-    print("Beräknar mått...")
-    cm, f1, report, y_test_bin, y_score = compute_metrics(data['y_test'], data['y_pred'], data['le'])
-    
-    interpret_results(cm, f1, report, data)
-    
-    print("Visualiserar...")
-    plot_results(data, cm, f1, report, y_test_bin, y_score)
