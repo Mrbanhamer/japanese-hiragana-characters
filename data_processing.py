@@ -21,3 +21,17 @@ def split_data(X_raw, y_raw):
     print(f"  Träning: {len(X_train)}  Test: {len(X_test)}")
     
     return X_train, X_test, y_train, y_test, le
+
+def pca_reduction(X_raw, y_raw):
+    # Vi utför i nuläget ingen skalning 
+
+    x_train, x_test, y_train, y_test, le = split_data(X_raw, y_raw)
+    # Välj den med minst komponenter för att förklara 95% av variansen
+    pca = PCA(n_components=0.95, random_state=42)
+    x_train_pca = pca.fit_transform(x_train)    # lär sig komponenter från train
+    x_test_pca = pca.transform(x_test)          # applicerar samma projektion på test men undviker läckage
+
+    print(f"  PCA: {X_raw.shape[1]} → {pca.n_components_} komponenter "
+          f"({pca.explained_variance_ratio_.sum():.1%} varians)")
+
+    return x_train_pca, x_test_pca, y_train, y_test, le
