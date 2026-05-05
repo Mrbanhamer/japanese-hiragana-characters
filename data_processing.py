@@ -23,6 +23,7 @@ def split_data(X_raw, y_raw):
     return X_train, X_test, y_train, y_test, le
 
 def pca_reduction(X_raw, y_raw):
+    # Vi utför i nuläget ingen skalning 
 
     x_train, x_test, y_train, y_test, le = split_data(X_raw, y_raw)
     # Välj den med minst komponenter för att förklara 95% av variansen
