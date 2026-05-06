@@ -1,5 +1,18 @@
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 from sklearn.decomposition import PCA
+
+
+def encode_labels(y_raw):
+    """Konverterar strängetiketter ("ko", "aa", …) till heltal (0, 1, …).
+
+    Vi returnerar den anpassade LabelEncoder:n tillsammans med den
+    kodade arrayen eftersom vi behöver le.classes_ senare för att
+    visa läsbara namn i klassificeringsrapporten och förväxlingsmatrisen.
+    """
+    le = LabelEncoder()
+    y = le.fit_transform(y_raw)
+    return y, le
 
 # X_raw : array -> Bilder
 # y_raw : list -> Strängetiketter

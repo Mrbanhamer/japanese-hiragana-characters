@@ -1,9 +1,11 @@
 from process_image.image_liquditation import run_dataset_processing
+from data_processing import pca_reduction
+from model_training import train
 
 if __name__ == "__main__":
-    # The function handles the loop, the folders, and the image processing
-    hiragana_dataset = run_dataset_processing()
 
-    # Just to prove it worked:
-    for char, variations in hiragana_dataset.items():
-        print(f"Character '{char}': Found {len(variations)} hand-drawn versions.")
+    x_raw, y_raw = run_dataset_processing()
+
+    x_train_pca, x_test_pca, y_train, y_test, le = pca_reduction(x_raw, y_raw)
+
+    y_pred, best_k, accuracies = train(x_train_pca, x_test_pca, y_train, y_test)
