@@ -61,6 +61,24 @@ fu
 ```
 
 Varje bild föreställer ett handskrivet hiraganatecken.
+```
+ 	a 	i 	u 	e 	o
+∅ 	あ 	い 	う 	え 	お
+k 	か 	き 	く 	け 	こ
+s 	さ 	し 	す 	せ 	そ
+t 	た 	ち 	つ 	て 	と
+n 	な 	に 	ぬ 	ね 	の
+h 	は 	ひ 	ふ 	へ 	ほ
+m 	ま 	み 	む 	め 	も
+y 	や  [X] ゆ  [X] よ
+r 	ら 	り 	る 	れ 	ろ
+w 	わ 	[X] [X] [X] を
+       ん (n)
+```
+
+Länk till dataset:
+https://www.kaggle.com/datasets/farukece/handwritten-japanese-hiragana-characters/
+
 
 ---
 
