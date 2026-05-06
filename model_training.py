@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
+from settings import K_RANGE
 
 # Vi väljer K optimistisk utifrån testdatan, utan att augmentera/maskera någon data
 def tune_k(x_train_pca, x_test_pca, y_train, y_test):
@@ -19,7 +20,6 @@ def tune_k(x_train_pca, x_test_pca, y_train, y_test):
                                sparas så vi kan plotta k-mot-accuracy-kurvan
     """
 
-    K_RANGE = range(1, 21)
     accuracies = []
 
     for k in K_RANGE:
