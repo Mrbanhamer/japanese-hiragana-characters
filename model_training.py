@@ -3,7 +3,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from settings import K_RANGE
 
-# Vi väljer K optimistisk utifrån testdatan, utan att augmentera/maskera någon data
+
+# Vi väljer K optimistisk utifrån testdatan, utan att augmentera/maskera någon data. För ett mer obalanserat dataset bör cross validation implementeras.
 def tune_k(x_train_pca, x_test_pca, y_train, y_test):
     """Provar varje k i K_RANGE och returnerar det bästa.
 
