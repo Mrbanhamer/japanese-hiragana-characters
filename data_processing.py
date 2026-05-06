@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.decomposition import PCA
+from evaluation import check_class_balance
 
 
 def encode_labels(y_raw):
@@ -12,6 +13,7 @@ def encode_labels(y_raw):
     """
     le = LabelEncoder()
     y = le.fit_transform(y_raw)
+    check_class_balance(y, le)
     return y, le
 
 # X_raw : array -> Bilder
