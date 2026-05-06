@@ -222,3 +222,4 @@ __marimo__/
 # Ignorera dataset
 dataset/*
 data/*
+.DS_Store
