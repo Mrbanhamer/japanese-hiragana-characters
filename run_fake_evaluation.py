@@ -1,5 +1,6 @@
 from fake_data import generate_data
-from main import check_class_balance, compute_metrics, interpret_results, plot_results
+from evaluation import check_class_balance, compute_metrics, interpret_results
+from plotting import plot_results
 
 def run():
     print("Genererar fejkdata...")
