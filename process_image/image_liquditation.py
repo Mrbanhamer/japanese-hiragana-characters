@@ -1,8 +1,10 @@
 import os
 import numpy as np
 from PIL import Image
+from settings import DATA_DIR, IMAGE_SIZE
 
-def run_dataset_processing(root_path="./hiragana", threshold=128):
+
+def run_dataset_processing(root_path=DATA_DIR):
     """
     Crawls folders and returns x_raw (NumPy array) and y_raw (list of labels).
     """
@@ -23,18 +25,19 @@ def run_dataset_processing(root_path="./hiragana", threshold=128):
                 
                 with Image.open(file_path) as img:
                     # 1. Resize and convert to B&W
-                    img = img.resize((128, 128))
-                    img = img.convert("L").point(lambda p: 255 if p > threshold else 0).convert("1")
+                    img = img.resize(IMAGE_SIZE)
+                    img = img.convert("L")
+
+                    # 3. Append flattened, normalized pixels to all_pixels
+                    all_pixels.append(np.asarray(img, dtype=np.float32).ravel() / 255.0)
                     
-                    # 2. Get bits as a list of integers (0 or 1)
-                    bits = [1 if p > 0 else 0 for p in img.getdata()]
-                    
-                    # 3. Append to our master lists
-                    all_pixels.append(bits)
+                    # 3. Append the folder name as the label
                     all_labels.append(label)
 
-    # Convert the list of lists into a 2D NumPy array
-    x_raw = np.array(all_pixels, dtype=np.uint8)
+    # Store flattened, normalized image pixels as a 2D array:
+    # one row per image, one column per pixel
+    # values are normalized grayscale intensities in the range [0.0, 1.0]
+    x_raw = np.array(all_pixels, dtype=np.float32)
     y_raw = all_labels
 
     return x_raw, y_raw
