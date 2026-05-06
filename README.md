@@ -21,7 +21,7 @@ Problemet är att AI:n missförstår uppdraget. Istället för effektiv propagan
 > “スウェーデンはちょっとさむいです”  
 > “Sverige är lite kallt.”
 
-Ingen blir hjärntvättad, men plötsligt börjar japanska turister fråga resebyråer om midsommar, allemansrätten och varför svenskar lägger fisk i burkar som luktar fara.
+Ingen blir hjärntvättad, men plötsligt börjar japanska turister fråga resebyråer om midsommar, allemansrätten och varför svenskar lägger fisk som luktar illa i burkar.
 
 **Visit Lagom kallar det en framgång!**
 
@@ -202,11 +202,11 @@ Eftersom KNN bygger på avstånd mellan datapunkter är dimensionsreducering ett
 
 ---
 
-### PCA fittas bara på train
+### PCA anpassas bara på train
 
 PCA anpassas endast på träningsdata.
 
-Om PCA skulle fittas på hela datasetet, inklusive testdata, skulle information från testdatan påverka modellen. Det hade lett till dataläckage.
+Om PCA skulle anpassas på hela datasetet, inklusive testdata, skulle information från testdatan påverka modellen. Det hade lett till dataläckage.
 
 ---
 
